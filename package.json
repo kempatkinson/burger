@@ -4,6 +4,7 @@
   "description": "e",
   "main": "server.js",
   "dependencies": {
+    "config.json": "0.0.4",
     "express": "^4.17.1",
     "express-handlebars": "^3.1.0",
     "handlebars": "^4.4.3",
@@ -25,5 +26,8 @@
   "bugs": {
     "url": "https://github.com/kempatkinson/burger/issues"
   },
-  "homepage": "https://github.com/kempatkinson/burger#readme"
+  "homepage": "https://github.com/kempatkinson/burger#readme",
+  "keywords": [
+    "cd"
+  ]
 }
