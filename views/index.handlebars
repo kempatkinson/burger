@@ -1,17 +1,38 @@
-{{!-- template for handlebars can render onto
-button  to submit user info--}}
+<h1>Burgers!</h1>
 
+<h2>Burgers that are not eaten!</h2>
 
-<div class="container">
-    <h1> Hi there </h1>
+<ul>
+  {{#each burger}}
+    {{#unless devoured}}
+      {{> burger/burger-block devoured=fakse}}
+    {{/unless}}
+  {{/each}}
+</ul>
 
-    {{!-- row with #each burger (unless devoured) --}} 
+<h2>Burgers that are devoured!</h2>
 
-    {{!-- undevoured buttons should have a button that make it devoured --}}
+<ul>
+  {{#each burger}}
+    {{#if devoured}}
+      {{> burger/burger-block devoured=true}}
+    {{/if}}
+  {{/each}}
+</ul>
 
-    {{!-- row with #each burger (if devoured) --}}
+<h2>Add a Buger</h2>
+<form class="create-form">
 
-    {{!-- submit form  --}}
+  <div class="form-group">
+    <label for="ca">Burger Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
 
+  <div class="form-group">
+    <label for="devoured">Eaten??</label><br>
+    <input type="radio" name="devoured" value="1" checked> Devoured!<br>
+    <input type="radio" name="devoured" value="0"> Devoured
+  </div>
 
-</div>
+  <button type="submit">Add Burger</button>
+</form>

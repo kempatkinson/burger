@@ -30,7 +30,7 @@ module.exports = function (app) {
     // and complete property
     db.Burger.create({
       burger_name: req.body.text,
-      devoured: req.body.complete
+      devoured: req.body.radio
     }).then(function (dbBurger) {
       // We have access to the new todo as an argument inside of the callback function
       res.redirect("/");
@@ -57,7 +57,7 @@ module.exports = function (app) {
     // we use where to describe which objects we want to update
     db.Burger.update({
       buger_name: req.body.text,
-      devoured: req.body.complete
+      devoured: req.body.radio
     }, {
       where: {
         id: req.body.id
