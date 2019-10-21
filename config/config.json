@@ -5,25 +5,29 @@
     "database": "burger_db",
     "host": "127.0.0.1",
     "dialect": "mysql", 
+    "engines": {
+      "node": "10.x"
+    },
     "define": {
       "timestamps": false
-    },
-    "operatorsAliases": "sequelize"
+    }
+
   },
   "test": {
     "username": "root",
-    "password": null,
-    "database": "database_test",
+    "password": "russellwam",
+    "database": "burger_db",
     "host": "127.0.0.1",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "engines": {
+      "node": "10.x"
+    }
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql",
-    "operatorsAliases": false
+    "engines": {
+      "node": "10.x"
+    }
   }
 }

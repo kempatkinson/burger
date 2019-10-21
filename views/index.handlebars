@@ -4,35 +4,64 @@
 
 <ul>
   {{#each burger}}
-    {{#unless devoured}}
-      {{> burger/burger-block devoured=fakse}}
-    {{/unless}}
+  {{#unless devoured}}
+  <li>{{burger_name}} </li>
+  
+  {{/unless}}
   {{/each}}
 </ul>
 
-<h2>Burgers that are devoured!</h2>
+<h2>Burgers that are eaten:</h2>
 
 <ul>
   {{#each burger}}
-    {{#if devoured}}
-      {{> burger/burger-block devoured=true}}
-    {{/if}}
+  {{#if devoured}}
+  <li>{{burger_name}} </li>
+  {{/if}}
   {{/each}}
 </ul>
 
-<h2>Add a Buger</h2>
+<h2>Add a Burger</h2>
 <form class="create-form">
 
   <div class="form-group">
     <label for="ca">Burger Name:</label>
-    <input type="text" id="ca" name="name">
+    <input type="text" id="burgertitle" name="name">
   </div>
 
   <div class="form-group">
     <label for="devoured">Eaten??</label><br>
-    <input type="radio" name="devoured" value="1" checked> Devoured!<br>
-    <input type="radio" name="devoured" value="0"> Devoured
+    <input type="radio" name="devoured" class="radio" value="1"> Devoured! <br>
+    <input type="radio" name="devoured" class="radio" value="0"> Not devoured
   </div>
 
-  <button type="submit">Add Burger</button>
+  <button type="submit" id="add">Add Burger</button>
+
+  <script>
+    $("#add").on("click", function (event) {
+      event.preventDefault();
+
+      var Burger_name = $("#burgertitle").val().trim()
+      var Devoured = $('input:radio[name=devoured]:checked').val().trim();
+      console.log(Devoured)
+      var newBurger = {
+        burger_name: Burger_name,
+        devoured: Devoured
+      }
+      console.log(newBurger)
+
+       // Send the POST request.
+      $.ajax("/api/burgers", {
+      type: "POST",
+      data: newBurger
+      }).then(function () {
+        console.log("created new burger");
+        // Reload the page to get the updated list
+        location.reload();
+      }
+    );
+
+
+    })
+  </script>
 </form>
